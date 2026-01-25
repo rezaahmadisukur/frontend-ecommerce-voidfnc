@@ -73,7 +73,7 @@ const Navbar = () => {
         </div>
         {/* Right Side */}
         <div className="flex items-center gap-4">
-          <InputGroup className="xl:w-80">
+          <InputGroup className="xl:w-80 hidden lg:flex">
             <InputGroupInput placeholder="Search products..." />
             <InputGroupAddon>
               <Search />
