@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "~/components/ui/sonner";
+import Navbar from "~/components/layout/Navbar";
 
 const inter = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
@@ -21,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} antialiased font-sans`}>
+        <Navbar />
         {children}
         <Toaster />
       </body>
