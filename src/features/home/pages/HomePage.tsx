@@ -1,11 +1,13 @@
 "use client";
 
-import HeroSection from "../components/HeroSection";
+import { HeroSection, RecomendedProductSection } from "../components";
 
 const HomePage = () => {
   return (
-    <div className="">
+    <div className="space-y-16">
       <HeroSection />
+
+      <RecomendedProductSection />
     </div>
   );
 };

@@ -25,7 +25,7 @@ const HeroSection = () => {
     <section className="w-full min-h-96 relative flex flex-col justify-center">
       <HeroImage />
 
-      <div className="flex flex-col gap-4 max-w-6xl 6xl:container mx-auto px-4 lg:gap-6">
+      <div className="flex flex-col gap-4 max-w-6xl 6xl:container mx-auto px-4 w-full lg:gap-6">
         <h1 className="text-4xl font-black leading-12 lg:leading-16 lg:text-5xl">
           Discover Your Next <br />{" "}
           <span className="text-primary">Favorite Product</span>
