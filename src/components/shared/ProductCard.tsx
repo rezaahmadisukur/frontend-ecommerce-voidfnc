@@ -24,7 +24,7 @@ const ProductCard = (props: TProductCard) => {
 
   return (
     <div className="flex flex-col gap-2 border rounded-xl overflow-hidden">
-      <Link href={`/product/${props.id}`}>
+      <Link href={`/products/${props.id}`}>
         <div className="relative w-full h-full aspect-4/3 overflow-hidden">
           <Image
             src={props.imageUrl ?? placeholderImageUrl}
@@ -42,7 +42,7 @@ const ProductCard = (props: TProductCard) => {
           <p className="text-sm text-muted-foreground">
             {props.category ?? "Uncategorized"}
           </p>
-          <Link href={`/product/${props.id}`} className="hover:underline">
+          <Link href={`/products/${props.id}`} className="hover:underline">
             <h3 className="text-lg font-bold">{props.name}</h3>
           </Link>
         </div>
