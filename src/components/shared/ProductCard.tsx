@@ -10,7 +10,7 @@ const placeholderImageUrl =
 
 type TProductCard = {
   name: string;
-  category: string;
+  category?: string;
   description: string;
   price: number;
   imageUrl?: string;
@@ -39,7 +39,9 @@ const ProductCard = (props: TProductCard) => {
       <div className="space-y-4 p-4">
         {/* Title and Category */}
         <div className="space-y-1">
-          <p className="text-sm text-muted-foreground">{props.category}</p>
+          <p className="text-sm text-muted-foreground">
+            {props.category ?? "Uncategorized"}
+          </p>
           <Link href={`/product/${props.id}`} className="hover:underline">
             <h3 className="text-lg font-bold">{props.name}</h3>
           </Link>
