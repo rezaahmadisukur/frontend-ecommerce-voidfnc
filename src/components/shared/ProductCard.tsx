@@ -27,7 +27,7 @@ const ProductCard = (props: TProductCard) => {
       <Link href={`/product/${props.id}`}>
         <div className="relative w-full h-full aspect-4/3 overflow-hidden">
           <Image
-            src={placeholderImageUrl}
+            src={props.imageUrl ?? placeholderImageUrl}
             alt="Product Image"
             unoptimized
             fill
