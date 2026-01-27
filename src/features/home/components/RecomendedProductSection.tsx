@@ -1,11 +1,15 @@
+"use client";
+
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { ProductCard } from "~/components/shared";
 import { Button } from "~/components/ui/button";
 import { ProductSortBy, useGetProducts } from "../api/getProducts";
+import { ProductCardSkeleton } from "~/components/shared/ProductCard";
+import { Activity } from "react";
 
 const RecomendedProductSection = () => {
-  const { data: products } = useGetProducts({
+  const { data: products, isLoading: productsIsLoading } = useGetProducts({
     input: {
       sort: ProductSortBy.RECOMMENDED,
       limit: 6
@@ -31,17 +35,25 @@ const RecomendedProductSection = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {products?.map((product) => (
-          <ProductCard
-            key={product.id}
-            id={product.id}
-            name={product.name}
-            category={product.category?.name}
-            description={product.description}
-            price={product.price}
-            imageUrl={product.imageUrl}
-          />
-        ))}
+        <Activity mode={products ? "visible" : "hidden"}>
+          {products?.map((product) => (
+            <ProductCard
+              key={product.id}
+              id={product.id}
+              name={product.name}
+              category={product.category?.name}
+              description={product.description}
+              price={product.price}
+              imageUrl={product.imageUrl}
+            />
+          ))}
+        </Activity>
+
+        <Activity mode={productsIsLoading && !products ? "visible" : "hidden"}>
+          <ProductCardSkeleton />
+          <ProductCardSkeleton />
+          <ProductCardSkeleton />
+        </Activity>
       </div>
     </section>
   );
