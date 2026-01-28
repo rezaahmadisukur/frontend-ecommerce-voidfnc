@@ -61,7 +61,9 @@ const ProductDetailPageInner = (props: ProductDetailPageInnerProps) => {
 
         <div className="space-y-2">
           <h5 className="font-semibold">Description</h5>
-          <p className="text-sm text-muted-foreground">{props.description}</p>
+          <p className="text-sm text-muted-foreground text-justify">
+            {props.description}
+          </p>
         </div>
 
         <Button variant="default" size="lg" className="w-full">

@@ -4,6 +4,7 @@ import "./globals.css";
 import { Toaster } from "~/components/ui/sonner";
 import Navbar from "~/components/layout/Navbar";
 import Providers from "./providers";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 const inter = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
@@ -28,7 +29,7 @@ export default function RootLayout({
           suppressHydrationWarning
         >
           <Navbar />
-          {children}
+          <NuqsAdapter>{children}</NuqsAdapter>
           <Toaster />
         </body>
       </Providers>

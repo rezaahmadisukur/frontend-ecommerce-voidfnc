@@ -12,7 +12,7 @@ const placeholderImageUrl =
 type TProductCard = {
   name: string;
   category?: string;
-  description: string;
+  description?: string;
   price: number;
   imageUrl?: string;
   id: string;
