@@ -11,7 +11,8 @@ import {
   SelectValue
 } from "~/components/ui/select";
 import { cn } from "~/lib/utils";
-import { parseAsArrayOf, parseAsString, useQueryState } from "nuqs";
+import { ProductSortBy } from "../api/SearchProducts";
+import useSearchProductQueryParams from "../hooks/useSearchProductQueryParams";
 
 const mockCategories: Record<string, string>[] = [
   {
@@ -31,27 +32,21 @@ const mockCategories: Record<string, string>[] = [
 const sortByOption = [
   {
     label: "Recommended",
-    value: "recommended"
+    value: ProductSortBy.RECOMMENDED
   },
   {
     label: "Price: Low to High",
-    value: "price-asc"
+    value: ProductSortBy.PRICE_ASC
   },
   {
     label: "Price: High to Low",
-    value: "price-desc"
+    value: ProductSortBy.PRICE_DESC
   }
 ];
 
 const SearchProductFilterPanel = () => {
-  const [searchCategory, setSearchCategory] = useQueryState<string[]>(
-    "category",
-    parseAsArrayOf(parseAsString, ",").withDefault([])
-  );
-  const [searchSortBy, setSearchSortBy] = useQueryState("sort", {
-    defaultValue: sortByOption[0].value,
-    clearOnDefault: false
-  });
+  const { searchCategory, setSearchCategory, searchSortBy, setSearchSortBy } =
+    useSearchProductQueryParams();
 
   const handleCategoryChange = (category: string) => {
     if (searchCategory.includes(category)) {

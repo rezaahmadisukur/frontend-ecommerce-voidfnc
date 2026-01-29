@@ -3,17 +3,26 @@
 import { cn } from "~/lib/utils";
 import SearchProductFilterPanel from "../components/SearchProductFilterPanel";
 import SearchProductList from "../components/SearchProductList";
-import { useGetProducts } from "~/features/home/api/getProducts";
+import { useSearchProducts } from "../api/SearchProducts";
+import useSearchProductQueryParams from "../hooks/useSearchProductQueryParams";
 
 const SearchProductPage = () => {
-  const { data: products, isLoading: productsIsLoading } = useGetProducts();
+  const { searchCategory, searchSortBy } = useSearchProductQueryParams();
+
+  const { data: products, isLoading: productsIsLoading } = useSearchProducts({
+    input: {
+      categoryIds: searchCategory,
+      sortBy: searchSortBy,
+      limit: 10
+    }
+  });
 
   const mappedProducts = products?.map((product) => ({
     id: product.id,
     name: product.name,
     price: product.price,
     imageUrl: product.imageUrl,
-    descrption: product.description,
+    description: product.description,
     category: product.category?.name ?? null
   }));
 
